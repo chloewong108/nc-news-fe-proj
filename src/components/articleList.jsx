@@ -1,14 +1,4 @@
-import { useEffect, useState } from "react";
-import { getAllArticles } from "../api";
-
-const Home = () => {
-  const [allArticles, setAllArticles] = useState([]);
-  useEffect(() => {
-    getAllArticles().then(({ articles }) => {
-      setAllArticles(articles);
-    });
-  }, []);
-
+const ArticleList = ({ allArticles }) => {
   return (
     <section>
       {allArticles.map((article) => {
@@ -25,5 +15,4 @@ const Home = () => {
     </section>
   );
 };
-
-export default Home;
+export default ArticleList;
