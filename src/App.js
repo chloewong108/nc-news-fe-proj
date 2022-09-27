@@ -5,6 +5,7 @@ import "./home.css";
 import Nav from "./components/nav";
 import { Routes, Route } from "react-router-dom";
 import Topics from "./components/topics";
+import ArticlePage from "./components/articleCard";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/topics" element={<Topics />}></Route>
         <Route path="/topics/:topic_name" element={<Topics />}></Route>
+        <Route path="/articles/:article_id" element={<ArticlePage />}></Route>
       </Routes>
     </div>
   );

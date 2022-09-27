@@ -13,3 +13,16 @@
 #categories {
   text-align: center;
 }
+#article-card-title {
+  text-align: center;
+}
+
+#article-card {
+  text-align: center;
+}
+
+#body {
+  text-align: center;
+  border: solid 3px;
+  border-color: cornflowerblue;
+}
