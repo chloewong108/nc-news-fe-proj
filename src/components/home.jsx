@@ -3,7 +3,6 @@ import { getAllArticles } from "../api";
 
 const Home = () => {
   const [allArticles, setAllArticles] = useState([]);
-  console.log("hello");
   useEffect(() => {
     getAllArticles().then(({ articles }) => {
       setAllArticles(articles);

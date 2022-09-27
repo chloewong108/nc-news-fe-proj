@@ -14,18 +14,9 @@ const Topics = () => {
       setTopics(topics.topics);
     });
 
-    // if (!topic_name) {
-    //   console.log("no topic");
-    //   selectArticlesByTopics().then((allTopics) => {
-    //     console.log(allTopics);
-    //     setArticles(allTopics.articles);
-    //   });
-    // } else {
-    selectArticlesByTopics(topic_name).then((topic) => {
-      //   console.log(topic.articles);
-      setArticles(topic.articles);
+    selectArticlesByTopics(topic_name).then(({ articles }) => {
+      setArticles(articles);
     });
-    // }
   }, [topic_name]);
 
   return (
