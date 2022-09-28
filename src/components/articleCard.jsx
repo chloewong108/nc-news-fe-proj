@@ -23,9 +23,9 @@ const ArticlePage = () => {
   }, [article_id]);
 
   if (!isValid) {
-    return <p>404 NOT FOUND</p>;
+    return <p>❌ 404: NOT FOUND ❌</p>;
   }
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p>🐢 Loading...🐢</p>;
   return (
     <div id="article-card">
       <h1 id="article-card-title">{currArticle.title}</h1>

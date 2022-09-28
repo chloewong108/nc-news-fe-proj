@@ -12,7 +12,7 @@ const Home = () => {
       setIsLoading(false);
     });
   }, []);
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p>🐢 Loading...🐢</p>;
   return (
     <section>
       {allArticles.map((article) => {
