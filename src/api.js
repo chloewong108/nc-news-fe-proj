@@ -31,3 +31,15 @@ export const getArticleById = (article_id) => {
       return res.data.article;
     });
 };
+export const incrementVotes = (article_id) => {
+  return axios.patch(
+    `https://bc-news-example.herokuapp.com/api/articles/${article_id}`,
+    { inc_votes: 1 }
+  );
+};
+export const reduceVotes = (article_id) => {
+  return axios.patch(
+    `https://bc-news-example.herokuapp.com/api/articles/${article_id}`,
+    { inc_votes: -1 }
+  );
+};
