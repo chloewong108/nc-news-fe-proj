@@ -17,6 +17,7 @@ function App() {
         <Route path="/topics" element={<Topics />}></Route>
         <Route path="/topics/:topic_name" element={<Topics />}></Route>
         <Route path="/articles/:article_id" element={<ArticlePage />}></Route>
+        <Route path="*" element={<p>404: Not Found</p>}></Route>
       </Routes>
     </div>
   );

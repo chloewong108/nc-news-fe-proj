@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [allArticles, setAllArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    setIsLoading(true);
     getAllArticles().then(({ articles }) => {
       setAllArticles(articles);
+      setIsLoading(false);
     });
   }, []);
-
+  if (isLoading) return <p>Loading...</p>;
   return (
     <section>
       {allArticles.map((article) => {
