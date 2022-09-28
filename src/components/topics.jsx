@@ -8,17 +8,19 @@ const Topics = () => {
   const [topics, setTopics] = useState([]);
   const [articles, setArticles] = useState([]);
   const { topic_name } = useParams();
-  console.log(topic_name);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    setIsLoading(true);
     getAllTopics().then((topics) => {
       setTopics(topics.topics);
     });
 
     selectArticlesByTopics(topic_name).then(({ articles }) => {
       setArticles(articles);
+      setIsLoading(false);
     });
   }, [topic_name]);
-
+  if (isLoading) return <p>Loading...</p>;
   return (
     <>
       <section>
