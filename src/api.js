@@ -45,3 +45,12 @@ export const patchVotes = (article_id, vote) => {
       console.log(err);
     });
 };
+export const getAllComments = (article_id) => {
+  return axios
+    .get(
+      `https://bc-news-example.herokuapp.com/api/articles/${article_id}/comments`
+    )
+    .then((res) => {
+      return res.data.comments;
+    });
+};

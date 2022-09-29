@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById, patchVotes } from "../api";
+import Comments from "./comments";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -49,6 +50,17 @@ const ArticlePage = () => {
       });
   };
 
+  const hideComments = () => {
+    const comments = document.getElementById("hide-comments");
+    if (comments.hidden) {
+      comments.style.display = "none";
+      comments.hidden = false;
+    } else {
+      comments.style.display = "block";
+      comments.hidden = true;
+    }
+  };
+
   return (
     <div id="article-card">
       <h1 id="article-card-title">{currArticle.title}</h1>
@@ -69,6 +81,11 @@ const ArticlePage = () => {
         </span>
       </button>
       {votes ? <p>Thanks for voting!</p> : null}
+      <br />
+      <button onClick={hideComments}>View comments</button>
+      <section hidden id="hide-comments">
+        <Comments />
+      </section>
     </div>
   );
 };

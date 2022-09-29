@@ -26,3 +26,22 @@
   border: solid 3px;
   border-color: cornflowerblue;
 }
+
+#comment-title {
+  text-align: center;
+}
+
+#comment-list {
+  text-align: center;
+  list-style-type: none;
+}
+
+#each-comment {
+  border-bottom: 2px solid grey;
+  padding: 5px;
+}
+
+#comment-card {
+  border: solid 3px;
+  padding: top 1rem;
+}
