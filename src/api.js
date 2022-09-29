@@ -1,5 +1,9 @@
 import axios from "axios";
 
+const newsApi = axios.create({
+  baseURL: "https://bc-news-example.herokuapp.com/api",
+});
+
 export const getAllArticles = () => {
   return fetch("https://bc-news-example.herokuapp.com/api/articles").then(
     (res) => {
@@ -31,15 +35,13 @@ export const getArticleById = (article_id) => {
       return res.data.article;
     });
 };
-export const incrementVotes = (article_id) => {
-  return axios.patch(
-    `https://bc-news-example.herokuapp.com/api/articles/${article_id}`,
-    { inc_votes: 1 }
-  );
-};
-export const reduceVotes = (article_id) => {
-  return axios.patch(
-    `https://bc-news-example.herokuapp.com/api/articles/${article_id}`,
-    { inc_votes: -1 }
-  );
+export const patchVotes = (article_id, vote) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, { inc_vote: vote })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };

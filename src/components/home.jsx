@@ -12,7 +12,18 @@ const Home = () => {
       setIsLoading(false);
     });
   }, []);
-  if (isLoading) return <p>🐢 Loading...🐢</p>;
+  if (isLoading)
+    return (
+      <p>
+        <span role="img" aria-hidden={true}>
+          🐢
+        </span>{" "}
+        Loading...
+        <span role="img" aria-hidden={true}>
+          🐢
+        </span>
+      </p>
+    );
   return (
     <section>
       {allArticles.map((article) => {

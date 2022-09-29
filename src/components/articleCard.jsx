@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById, incrementVotes, reduceVotes } from "../api";
+import { getArticleById, patchVotes } from "../api";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -25,7 +25,30 @@ const ArticlePage = () => {
   if (!isValid) {
     return <p>❌ 404: NOT FOUND ❌</p>;
   }
-  if (isLoading) return <p>🐢 Loading...🐢</p>;
+  if (isLoading)
+    return (
+      <p>
+        <span role="img" aria-hidden={true} />
+        🐢
+        <span /> Loading...
+        <span role="img" aria-hidden={true}>
+          🐢
+        </span>
+      </p>
+    );
+
+  const handleClick = (num) => {
+    setVotes((currVotes) => (currVotes += num));
+    patchVotes(article_id, num)
+      .then(() => {
+        <p>Voted!</p>;
+      })
+      .catch((err) => {
+        console.log(err);
+        setVotes((currVotes) => (currVotes -= num));
+      });
+  };
+
   return (
     <div id="article-card">
       <h1 id="article-card-title">{currArticle.title}</h1>
@@ -34,36 +57,18 @@ const ArticlePage = () => {
       <p id="body">{currArticle.body}</p>
       <p>Votes: {currArticle.votes + votes}</p>
 
-      <button
-        disabled={votes ? true : false}
-        onClick={(e) => {
-          incrementVotes(article_id).catch(() => {
-            setVotes((currVotes) => {
-              return currVotes - 1;
-            });
-          });
-          setVotes((currVotes) => {
-            return currVotes + 1;
-          });
-        }}
-      >
-        👍
+      <button disabled={votes ? true : false} onClick={() => handleClick(1)}>
+        <span role="img" aria-label="thumbs-up">
+          {" "}
+          👍
+        </span>
       </button>
-      <button
-        disabled={votes ? true : false}
-        onClick={(e) => {
-          reduceVotes(article_id).catch(() => {
-            setVotes((currVotes) => {
-              return currVotes + 1;
-            });
-          });
-          setVotes((currVotes) => {
-            return currVotes - 1;
-          });
-        }}
-      >
-        👎
+      <button disabled={votes ? true : false} onClick={() => handleClick(-1)}>
+        <span role="img" aria-label="thumbs-down">
+          👎
+        </span>
       </button>
+      {votes ? <p>Thanks for voting!</p> : null}
     </div>
   );
 };
