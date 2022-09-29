@@ -41,9 +41,7 @@ export const patchVotes = (article_id, vote) => {
     .then((res) => {
       return res.data;
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => {});
 };
 export const getAllComments = (article_id) => {
   return axios

@@ -34,7 +34,7 @@ const Comments = () => {
         <ul id="comment-list">
           {comments.map((comment) => {
             const date = new Date(comment.created_at);
-            console.log(comment.created_at);
+
             return (
               <li id="each-comment" key={comment.comment_id}>
                 <p>{comment.author}:</p>

@@ -44,7 +44,6 @@ const ArticlePage = () => {
         <p>Voted!</p>;
       })
       .catch((err) => {
-        console.log(err);
         setVotes((currVotes) => (currVotes -= num));
       });
   };
