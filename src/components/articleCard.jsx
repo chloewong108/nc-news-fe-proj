@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById, patchVotes } from "../api";
+import Comments from "./comments";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -13,7 +14,6 @@ const ArticlePage = () => {
     getArticleById(article_id)
       .then((article) => {
         setIsLoading(true);
-
         setCurrArticle(article);
         setIsLoading(false);
       })
@@ -44,9 +44,19 @@ const ArticlePage = () => {
         <p>Voted!</p>;
       })
       .catch((err) => {
-        console.log(err);
         setVotes((currVotes) => (currVotes -= num));
       });
+  };
+
+  const hideComments = () => {
+    const comments = document.getElementById("hide-comments");
+    if (comments.hidden) {
+      comments.style.display = "none";
+      comments.hidden = false;
+    } else {
+      comments.style.display = "block";
+      comments.hidden = true;
+    }
   };
 
   return (
@@ -69,6 +79,11 @@ const ArticlePage = () => {
         </span>
       </button>
       {votes ? <p>Thanks for voting!</p> : null}
+      <br />
+      <button onClick={hideComments}>View comments</button>
+      <section hidden id="hide-comments">
+        <Comments />
+      </section>
     </div>
   );
 };
