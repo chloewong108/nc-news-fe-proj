@@ -14,7 +14,6 @@ const ArticlePage = () => {
     getArticleById(article_id)
       .then((article) => {
         setIsLoading(true);
-
         setCurrArticle(article);
         setIsLoading(false);
       })
