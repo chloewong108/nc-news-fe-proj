@@ -41,7 +41,9 @@ export const patchVotes = (article_id, vote) => {
     .then((res) => {
       return res.data;
     })
-    .catch((err) => {});
+    .catch((err) => {
+      console.log(err);
+    });
 };
 export const getAllComments = (article_id) => {
   return axios
@@ -51,4 +53,25 @@ export const getAllComments = (article_id) => {
     .then((res) => {
       return res.data.comments;
     });
+};
+
+export const postComment = (article_id, author, body) => {
+  console.log({ article_id, author, body });
+  return axios
+    .post(
+      `https://bc-news-example.herokuapp.com/api/articles/${article_id}/comments`,
+      { username: author, body: body }
+    )
+    .then((res) => {
+      console.log(res);
+      return res.data.comment;
+    });
+};
+
+export const getAllUsers = () => {
+  return fetch(`https://bc-news-example.herokuapp.com/api/users`).then(
+    (res) => {
+      return res.json();
+    }
+  );
 };
