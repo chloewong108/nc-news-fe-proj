@@ -85,9 +85,6 @@ const ArticlePage = () => {
       <section hidden id="hide-comments">
         <Comments />
       </section>
-      <section>
-        <PostComment />
-      </section>
     </div>
   );
 };

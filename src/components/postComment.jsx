@@ -3,14 +3,16 @@ import { useParams } from "react-router-dom";
 import { postComment } from "../api";
 import { UserContext } from "../context/user";
 
-const PostComment = () => {
+const PostComment = ({ setComments }) => {
   const [newBody, setNewBody] = useState("");
   const { article_id } = useParams();
   const { currentUser } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postComment(article_id, currentUser.username, newBody).then(() => {});
+    postComment(article_id, currentUser.username, newBody).then((comment) => {
+      return setComments((allComments) => [...allComments, comment]);
+    });
   };
 
   const handleClick = () => {
