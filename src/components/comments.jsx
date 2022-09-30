@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllComments } from "../api";
 import { useParams } from "react-router-dom";
+import PostComment from "./postComment";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
@@ -48,6 +49,7 @@ const Comments = () => {
             );
           })}
         </ul>
+        <PostComment setComments={setComments} />
       </div>
     </>
   );

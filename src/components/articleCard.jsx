@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById, patchVotes } from "../api";
 import Comments from "./comments";
+import PostComment from "./postComment";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -83,6 +84,9 @@ const ArticlePage = () => {
       <button onClick={hideComments}>View comments</button>
       <section hidden id="hide-comments">
         <Comments />
+      </section>
+      <section>
+        <PostComment />
       </section>
     </div>
   );

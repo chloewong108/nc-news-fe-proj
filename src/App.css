@@ -45,3 +45,12 @@
   border: solid 3px;
   padding: top 1rem;
 }
+
+#users-list {
+  text-align: center;
+  list-style: none;
+}
+
+#users-title {
+  text-align: center;
+}
