@@ -4,12 +4,14 @@ const newsApi = axios.create({
   baseURL: "https://bc-news-example.herokuapp.com/api",
 });
 
-export const getAllArticles = () => {
-  return fetch("https://bc-news-example.herokuapp.com/api/articles").then(
-    (res) => {
-      return res.json();
-    }
-  );
+export const getAllArticles = (sort_by = "created_at", order = "DESC") => {
+  return axios
+    .get("https://bc-news-example.herokuapp.com/api/articles", {
+      params: { sort_by, order },
+    })
+    .then((res) => {
+      return res.data;
+    });
 };
 export const selectArticlesByTopics = (topic_name = "") => {
   return axios
