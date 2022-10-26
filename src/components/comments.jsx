@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { getAllComments } from "../api";
+import { deleteComment, getAllComments } from "../api";
 import { useParams } from "react-router-dom";
 import PostComment from "./postComment";
+import { useContext } from "react";
+import { UserContext } from "../context/user";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
+  const { currentUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,6 +18,17 @@ const Comments = () => {
       setComments(res);
     });
   }, [article_id]);
+
+  const removeComment = (comment_id) => {
+    deleteComment(comment_id, currentUser.username).then(() => {
+      setComments((currentComments) => {
+        const filteredComments = [...currentComments];
+        return filteredComments.filter((comment) => {
+          return comment.comment_id !== comment_id;
+        });
+      });
+    });
+  };
 
   if (isLoading)
     return (
@@ -45,6 +59,17 @@ const Comments = () => {
                   Date:{" "}
                   {`${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`}
                 </p>
+                <button
+                  id="deleteButton"
+                  hidden={
+                    currentUser.username !== comment.author ? true : false
+                  }
+                  onClick={() => {
+                    removeComment(comment.comment_id);
+                  }}
+                >
+                  Delete
+                </button>
               </li>
             );
           })}
