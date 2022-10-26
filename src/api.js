@@ -77,3 +77,9 @@ export const getAllUsers = () => {
     }
   );
 };
+
+export const deleteComment = (comment_id) => {
+  return axios.delete(
+    `https://bc-news-example.herokuapp.com/api/comments/${comment_id}`
+  );
+};
