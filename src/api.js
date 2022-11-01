@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const newsApi = axios.create({
-  baseURL: "https://bc-news-example.herokuapp.com/api",
+  baseURL: "https://nc-news-proj.herokuapp.com/api",
 });
 
 export const getAllArticles = (sort_by = "created_at", order = "DESC") => {
   return axios
-    .get("https://bc-news-example.herokuapp.com/api/articles", {
+    .get("https://nc-news-proj.herokuapp.com/api/articles", {
       params: { sort_by, order },
     })
     .then((res) => {
@@ -15,7 +15,7 @@ export const getAllArticles = (sort_by = "created_at", order = "DESC") => {
 };
 export const selectArticlesByTopics = (topic_name = "") => {
   return axios
-    .get(`https://bc-news-example.herokuapp.com/api/articles`, {
+    .get(`https://nc-news-proj.herokuapp.com/api/articles`, {
       params: { topic: topic_name },
     })
     .then((res) => {
@@ -24,15 +24,13 @@ export const selectArticlesByTopics = (topic_name = "") => {
 };
 
 export const getAllTopics = () => {
-  return fetch(`https://bc-news-example.herokuapp.com/api/topics`).then(
-    (res) => {
-      return res.json();
-    }
-  );
+  return fetch(`https://nc-news-proj.herokuapp.com/api/topics`).then((res) => {
+    return res.json();
+  });
 };
 export const getArticleById = (article_id) => {
   return axios
-    .get(`https://bc-news-example.herokuapp.com/api/articles/${article_id}`)
+    .get(`https://nc-news-proj.herokuapp.com/api/articles/${article_id}`)
     .then((res) => {
       return res.data.article;
     });
@@ -50,7 +48,7 @@ export const patchVotes = (article_id, vote) => {
 export const getAllComments = (article_id) => {
   return axios
     .get(
-      `https://bc-news-example.herokuapp.com/api/articles/${article_id}/comments`
+      `https://nc-news-proj.herokuapp.com/api/articles/${article_id}/comments`
     )
     .then((res) => {
       return res.data.comments;
@@ -61,7 +59,7 @@ export const postComment = (article_id, author, body) => {
   console.log({ article_id, author, body });
   return axios
     .post(
-      `https://bc-news-example.herokuapp.com/api/articles/${article_id}/comments`,
+      `https://nc-news-proj.herokuapp.com/api/articles/${article_id}/comments`,
       { username: author, body: body }
     )
     .then((res) => {
@@ -71,15 +69,13 @@ export const postComment = (article_id, author, body) => {
 };
 
 export const getAllUsers = () => {
-  return fetch(`https://bc-news-example.herokuapp.com/api/users`).then(
-    (res) => {
-      return res.json();
-    }
-  );
+  return fetch(`https://nc-news-proj.herokuapp.com/api/users`).then((res) => {
+    return res.json();
+  });
 };
 
 export const deleteComment = (comment_id) => {
   return axios.delete(
-    `https://bc-news-example.herokuapp.com/api/comments/${comment_id}`
+    `https://nc-news-proj.herokuapp.com/api/comments/${comment_id}`
   );
 };
