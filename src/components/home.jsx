@@ -44,7 +44,7 @@ const Home = () => {
       </p>
     );
   return (
-    <div>
+    <div id="sort">
       <section>
         <span>Sort Bar:</span>
         <br />

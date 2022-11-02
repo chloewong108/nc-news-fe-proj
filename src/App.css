@@ -1,56 +1,76 @@
 #main-title {
   text-align: center;
+  background-color: lightgrey;
+  font-family: Arial, Helvetica, sans-serif;
 }
 #nav {
   text-align: center;
-  padding: 5px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #topic-title {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: lightgray;
 }
 
 #categories {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 #article-card-title {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #article-card {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #body {
   text-align: center;
   border: solid 3px;
   border-color: cornflowerblue;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-#comment-title {
+#users-list {
   text-align: center;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#users-title {
+  background-color: lightgrey;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#sort {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding: 10px;
 }
 
 #comment-list {
   text-align: center;
-  list-style-type: none;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#comment-title {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #each-comment {
-  border-bottom: 2px solid grey;
+  border-bottom: 1px solid grey;
   padding: 5px;
 }
 
 #comment-card {
   border: solid 3px;
   padding: top 1rem;
-}
-
-#users-list {
-  text-align: center;
-  list-style: none;
-}
-
-#users-title {
-  text-align: center;
 }
